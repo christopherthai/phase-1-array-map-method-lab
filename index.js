@@ -11,6 +11,30 @@ const tutorials = [
   'what is JSONP?'
 ];
 
+const regexp = /^[A-Z]/;
 const titleCased = () => {
-  return tutorials
+  return tutorials.map((sentence) => {
+
+    //Covert the sentence into an array of words
+    let wordArray = sentence.split(' ')
+
+    //Change the first letter of the words to uppercase
+    let newWordArray = wordArray.map((word) => {
+
+      let newWord
+      // Check if the first letter of the word is uppercase,
+      // If it is not, uppercase the first letter of the word
+      if (regexp.test(word)) {
+        newWord = word
+      } else {
+        newWord = word.charAt(0).toUpperCase() + word.slice(1)
+      }
+      return newWord
+    })
+
+    // Convert the array of words back to a sentence
+    return newWordArray.join(' ')
+
+  }
+  )
 }
